@@ -64,4 +64,8 @@ func main() {
 	// another difference between var and := is that var declared  variables can be declared outside and inside the function.
 
 	// whereas := declared variables can only be declared within a function
+
+	var e, f, g, h int = 2, 4, 6, 8
+
+	fmt.Println(e, f, g, h)
 }
