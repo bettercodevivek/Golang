@@ -68,4 +68,13 @@ func main() {
 	var e, f, g, h int = 2, 4, 6, 8
 
 	fmt.Println(e, f, g, h)
+
+	// Multiple variable declarations can also be grouped together into a block for greater readability:
+
+	var (
+		a1 string = "hello"
+		a2 string = "my name is"
+		a3 string = "sully"
+	)
+	fmt.Println(a1 + a2 + a3)
 }
