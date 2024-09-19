@@ -4,6 +4,10 @@ import (
 	"fmt"
 )
 
+var myname2 string = "jane doe"
+
+// myname3 := "joe doe"
+
 func main() {
 	fmt.Println("hello world. i am learning golang!")
 	fmt.Println("This is 2nd statement")
@@ -35,4 +39,29 @@ func main() {
 	myname1 := "john doe"
 
 	fmt.Println(myname1)
+
+	//It is not possible to declare a variable using :=, without assigning a value to it.
+
+	var c int
+	c = 60
+
+	d := 80
+
+	fmt.Println(c, d)
+
+	var var1 string
+	var var2 int
+	var var3 bool
+	var var4 int16
+	var var5 int32
+	var var6 int64
+	var var7 int8
+
+	fmt.Println(var1, var2, var3, var4, var5, var6, var7)
+
+	fmt.Println(myname2)
+
+	// another difference between var and := is that var declared  variables can be declared outside and inside the function.
+
+	// whereas := declared variables can only be declared within a function
 }
