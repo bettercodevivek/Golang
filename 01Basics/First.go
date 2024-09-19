@@ -77,4 +77,23 @@ func main() {
 		a3 string = "sully"
 	)
 	fmt.Println(a1 + a2 + a3)
+
+	// var name_1 string = "jimmy"
+
+	// var name_2 string = "stuart"
+
+	// var name_3 string = "mitchell"
+
+	// fmt.Println(name_1, name_2, name_3)
+
+	var (
+		name_1 string = "jimmy"
+
+		name_2 string = "mitchell"
+
+		name_3 string = "stuart"
+	)
+
+	fmt.Println("hello " + name_1 + " I am " + name_2 + " and this is " + name_3)
+
 }
