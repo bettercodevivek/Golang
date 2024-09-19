@@ -21,6 +21,18 @@ func main() {
 	var myname string = "vivek"
 	fmt.Println(myname)
 
+	var a int = 40
+	var b int = 80
+
+	fmt.Println(a * b)
+
 	// In go, you can enclose string variables in double quotes only, single quotes will give error
 
+	// 2. using := sign ,  variablename := value
+
+	// In this case, the type of the variable is inferred from the value (means that the compiler decides the type of the variable, based on the value).
+
+	myname1 := "john doe"
+
+	fmt.Println(myname1)
 }
