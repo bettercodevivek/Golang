@@ -112,7 +112,7 @@ func main() {
 
 	var var_1 string = "virat"
 
-	fmt.Printf("%T", var_1)
+	fmt.Printf("%T\n", var_1)
 
 	/* The Printf() function first formats its argument based on the given formatting verb and then prints them.
 
