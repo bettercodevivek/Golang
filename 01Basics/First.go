@@ -122,4 +122,12 @@ func main() {
 	    %T is used to print the type of the arguments
 	*/
 
+	var input string
+
+	fmt.Println("Enter your Input")
+
+	fmt.Scanln(&input)
+
+	fmt.Println("your input is", input)
+
 }
