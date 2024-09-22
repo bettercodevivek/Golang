@@ -122,12 +122,22 @@ func main() {
 	    %T is used to print the type of the arguments
 	*/
 
-	var input string
+	// var input string
 
-	fmt.Println("Enter your Input")
+	// fmt.Println("Enter your Input")
 
-	fmt.Scanln(&input)
+	// fmt.Scanln(&input)
 
-	fmt.Println("your input is", input)
+	// fmt.Println("your input is", input)
+
+	var name_4 string = "johnny depp"
+
+	var inp string
+
+	fmt.Println("Enter your string command boss !")
+
+	fmt.Scanln(&inp)
+
+	fmt.Println("The final answer is => " + name_4 + " " + inp)
 
 }
