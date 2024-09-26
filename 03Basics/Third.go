@@ -16,6 +16,28 @@ func Stringer(message1 string, message2 string) string {
 	return message1 + message2
 }
 
+// Let us see a function that can return multiple values at once
+
+func Divide(num1 int, num2 int) (int, error) {
+	if num2 == 0 {
+		return 0, fmt.Errorf("cannot divide by zero")
+	}
+	return num1 / num2, nil
+}
+
+// Let us see one more function with multiple return values
+
+func Random(val1 int, val2 int) (int, string) {
+	return val1 + val2, "Hello this is the compiler"
+}
+
+func Named(val1 int, val2 int) (sum int, prod int) {
+	sum = val1 + val2
+	prod = val1 * val2
+
+	return
+}
+
 func main() {
 
 	myfunc := func() {
@@ -37,4 +59,12 @@ func main() {
 
 	// If using return keyword in golang then you have to specify the return type of the function explicitly just before the {} of function
 
+	fmt.Println(Divide(45, 0))
+
+	fmt.Println(Random(34, 56))
+
+	sum, prod := Named(40, 50)
+
+	fmt.Println("Sum is", sum)
+	fmt.Println("Product is", prod)
 }
