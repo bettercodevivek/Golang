@@ -34,4 +34,11 @@ func main() {
 	fmt.Println(arr4, arr5)
 
 	// for all array elements whose values have not been initialised, in go they have default values assigned. for int its 0 , for bool its false , for string its " "
+
+	// in Golang you can initialise specific elements of the  array in the following manner :-
+
+	var arr6 = [5]int{1: 10, 3: 50, 0: 5}
+
+	fmt.Println(arr6)
+
 }
