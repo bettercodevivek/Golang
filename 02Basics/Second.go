@@ -90,4 +90,28 @@ func main() {
 	fmt.Println(myslice3)
 
 	//It works only up to the slice's capacity. If you append more elements than the capacity, Go automatically allocates more space.
+
+	// you can also append one slice into another.
+
+	myslice4 := append(myslice2, myslice3...)
+	fmt.Println(myslice4)
+
+	// LET US NOW STUDY ABOUT CONDITIONAL STATEMENTS IN GOLANG
+
+	// 1. if statement
+
+	var myvar1 int
+	var myvar2 int
+
+	fmt.Println("Enter your values => ")
+	fmt.Scanln(&myvar1)
+	fmt.Scanln(&myvar2)
+
+	// The & symbol means you're passing the address of the variable (this is needed because Scanln needs to modify the actual variable, not a copy of it).
+
+	if myvar1 < myvar2 {
+		fmt.Println("IF CONDITION PERFECTLY EXECUTED BOSS, MYVAR2 IS GREATER !")
+	} else {
+		fmt.Println("MYVAR1 GREATER BOSS !")
+	}
 }
