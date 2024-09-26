@@ -38,6 +38,29 @@ func Named(val1 int, val2 int) (sum int, prod int) {
 	return
 }
 
+// LET US SEE VARIADIC FUNCTIONS NOW
+// Go allows functions to accept variadic parameters, which means the function can take an arbitrary number of arguments of the same type.
+
+func variadicexmp(nums ...int) int {
+	var total int = 0
+	for _, num := range nums {
+		total += num
+	}
+	return total
+}
+
+// The ... syntax means the function can accept any number of integers as arguments.
+
+// Inside the function, nums behaves like a slice ([]int), and you can loop over it to process the values.
+
+func variadicexmp2(words ...string) string {
+	sentence := " "
+	for _, word := range words {
+		sentence += word + " "
+	}
+	return sentence
+}
+
 func main() {
 
 	myfunc := func() {
@@ -67,4 +90,9 @@ func main() {
 
 	fmt.Println("Sum is", sum)
 	fmt.Println("Product is", prod)
+
+	fmt.Println(variadicexmp(1, 2, 3, 4, 5))
+	fmt.Println(variadicexmp(1, 2, 3, 4, 5, 45, 65, 6, 3, 34, 35, 5464, 5, 54, 645, 4, 3, 46))
+
+	fmt.Println(" this is the second variadic function example", variadicexmp2("Hello", "my", "name", "is", "vivek"))
 }
