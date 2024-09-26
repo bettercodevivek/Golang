@@ -130,4 +130,27 @@ func main() {
 	} else {
 		fmt.Println("myvar3 is the greatest")
 	}
+
+	/* Use the switch statement to select one of many code blocks to be executed.
+	The switch statement in Go is similar to the ones in C, C++, Java, JavaScript, and PHP. The difference is that it only runs the matched case so it does not need a break statement. */
+
+	// 1. Single-Case switch Syntax
+
+	var day int
+	fmt.Println("Enter your choice of day => ")
+	fmt.Scanln(&day)
+
+	switch day {
+	case 1:
+		fmt.Println("Monday")
+	case 2:
+		fmt.Println("Tuesday")
+	case 3:
+		fmt.Println("Wednesday")
+	case 4:
+		fmt.Println("Thursday")
+	case 5:
+		fmt.Println("Friday")
+	}
+
 }
