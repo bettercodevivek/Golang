@@ -151,6 +151,27 @@ func main() {
 		fmt.Println("Thursday")
 	case 5:
 		fmt.Println("Friday")
+
+	default:
+		fmt.Println("No day detected")
 	}
 
+	// The default keyword specifies some code to run if there is no case match:
+
+	// 2. The Multi-case switch Statement
+
+	var days int
+	fmt.Println("Enter your choice of day sir! => ")
+	fmt.Scanln(&days)
+
+	switch days {
+	case 1, 3, 5:
+		fmt.Println("Odd days detected boss")
+	case 2, 4, 6:
+		fmt.Println("Even days detected boss")
+	case 7:
+		fmt.Println("Sunday")
+	default:
+		fmt.Println("enter a valid day")
+	}
 }
