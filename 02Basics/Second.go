@@ -174,4 +174,24 @@ func main() {
 	default:
 		fmt.Println("enter a valid day")
 	}
+
+	// CALCULATOR PROGRAM FROM SWITCH
+
+	var op string
+	var a int
+	var b int
+	fmt.Println("enter your choice of operator and values")
+	fmt.Scan(&op, &a, &b)
+
+	switch op {
+	case "+":
+		fmt.Println("Its a sum and value is => ", a+b)
+	case "-":
+		fmt.Println("Its a subtraction and value is => ", a-b)
+	case "/":
+		fmt.Println("Its a division and value is => ", a/b)
+	case "*":
+		fmt.Println("Its a Multiply and value is => ", a*b)
+	}
+	// If you want to pass multiple inputs at once in golang, use Scan function isntead of Scanln
 }
