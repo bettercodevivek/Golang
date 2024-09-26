@@ -12,6 +12,10 @@ func Adder(num1 int, num2 int) {
 	}
 }
 
+func Stringer(message1 string, message2 string) string {
+	return message1 + message2
+}
+
 func main() {
 
 	myfunc := func() {
@@ -26,4 +30,11 @@ func main() {
 
 	myfunc()
 	Adder(2, 4)
+	result := Stringer("hello", "i am learning golang")
+	fmt.Println(result)
+
+	// In golang, when parameters are defined in a function their datatype needs to specified too else it will throw an error.
+
+	// If using return keyword in golang then you have to specify the return type of the function explicitly just before the {} of function
+
 }
