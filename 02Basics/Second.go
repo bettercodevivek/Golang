@@ -98,7 +98,7 @@ func main() {
 
 	// LET US NOW STUDY ABOUT CONDITIONAL STATEMENTS IN GOLANG
 
-	// 1. if statement
+	// 1. if-else statement
 
 	var myvar1 int
 	var myvar2 int
@@ -109,9 +109,25 @@ func main() {
 
 	// The & symbol means you're passing the address of the variable (this is needed because Scanln needs to modify the actual variable, not a copy of it).
 
-	if myvar1 < myvar2 {
-		fmt.Println("IF CONDITION PERFECTLY EXECUTED BOSS, MYVAR2 IS GREATER !")
+	// if myvar1 < myvar2 {
+	// 	fmt.Println("IF CONDITION PERFECTLY EXECUTED BOSS, MYVAR2 IS GREATER !")
+	// } else {
+	// 	fmt.Println("MYVAR1 GREATER BOSS !")
+	// }
+
+	// IMPORTANT :- Having the else brackets in a different line will raise an error:
+
+	// 2. if-elseif-else statement
+
+	var myvar3 int
+	fmt.Println("Enter value of var3")
+	fmt.Scanln(&myvar3)
+
+	if myvar1 > myvar2 {
+		fmt.Println("Myvar1 is greater than Myvar2")
+	} else if myvar2 > myvar3 {
+		fmt.Println("myvar 2 is greater than myvar3")
 	} else {
-		fmt.Println("MYVAR1 GREATER BOSS !")
+		fmt.Println("myvar3 is the greatest")
 	}
 }
