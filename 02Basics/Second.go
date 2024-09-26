@@ -86,6 +86,8 @@ func main() {
 	// TOH ISKA SOLUTION ??
 	// If you want to add elements beyond the initial length (4), you should use the append() function to grow the slice.
 
-	myslice3 = append(myslice3, "vivekf", "vivekn")
+	myslice3 = append(myslice3, "vivekf", "vivekn", "vivekm")
 	fmt.Println(myslice3)
+
+	//It works only up to the slice's capacity. If you append more elements than the capacity, Go automatically allocates more space.
 }
