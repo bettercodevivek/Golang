@@ -24,6 +24,14 @@ func main() {
 
 	// Write to the file before closing it
 	_, err = file.WriteString("The file has been updated now\n")
+
+	/* _ (underscore): In Go, the underscore is known as the blank identifier. It's used to discard a value that you're not interested in. In this case, WriteString returns two values:
+
+	    The number of bytes written to the file.
+	    An error value.
+
+	Since you don't need to know how many bytes were written, you use _ to discard that value. */
+
 	if err != nil {
 		fmt.Println("error writing to the file:", err)
 		return
@@ -31,3 +39,15 @@ func main() {
 
 	fmt.Println("File opened and updated successfully!")
 }
+
+/*     0: The leading 0 indicates that the number is written in octal (base 8).
+6: The owner (user) of the file has read (4) and write (2) permissions. 4 + 2 = 6.
+4: The group has read permission (4), but no write or execute permissions.
+4: Others (everyone else) have read permission (4), but no write or execute permissions.
+
+  Meaning of 0644:
+
+The owner of the file can read and write to the file.
+The group and others can only read the file, but they cannot write or execute it.
+
+*/
