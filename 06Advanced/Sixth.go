@@ -7,7 +7,13 @@ func main() {
 
 	var a int = 20
 
-	ptr := &a
+	var ptr *int = &a
 
-	fmt.Println(ptr)
+	fmt.Println(*ptr)
+
+	//If you have a pointer, you can modify the original value by dereferencing the pointer.
+
+	*ptr = 50
+
+	fmt.Println("new value is :-", *ptr)
 }
