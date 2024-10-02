@@ -23,7 +23,7 @@ func main() {
 	defer file.Close()
 
 	// Write to the file before closing it
-	_, err = file.WriteString("The file has been updated now\n")
+	vivbyte, err := file.WriteString("The file has been updated now\n")
 
 	/* _ (underscore): In Go, the underscore is known as the blank identifier. It's used to discard a value that you're not interested in. In this case, WriteString returns two values:
 
@@ -37,7 +37,7 @@ func main() {
 		return
 	}
 
-	fmt.Println("File opened and updated successfully!")
+	fmt.Println("File opened and updated successfully!", vivbyte)
 }
 
 /*     0: The leading 0 indicates that the number is written in octal (base 8).
