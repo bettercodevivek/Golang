@@ -9,7 +9,13 @@ import "fmt"
 
 func main() {
 
-	defer fmt.Println("and this is the first defer statement")
+	defer fmt.Println("and this is the 1st defer statement")
+
+	defer fmt.Println("this is the 2nd defer statement")
+
+	defer fmt.Println("this is the 3nd defer statement")
+
+	// it can be clearly seen that in case of multiple defer statements , the defer statements follow LIFO. therefore last statment will get executed first.
 
 	fmt.Println("my name is vivek and i am learning golang !")
 
