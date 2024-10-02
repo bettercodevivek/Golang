@@ -1,22 +1,33 @@
-// LET US NOW STUDY ABOUT DEFER KEYWORD IN GOLANG
-
-/*The defer keyword is used to postpone the execution of a function until the surrounding function returns. It’s often used for cleanup tasks,
-like closing files or releasing resources, to ensure they are handled properly even if an error occurs in the function. */
-
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 
-	defer fmt.Println("and this is the 1st defer statement")
+	// defer fmt.Println("and this is the 1st defer statement")
+	// defer fmt.Println("this is the 2nd defer statement")
+	// defer fmt.Println("this is the 3rd defer statement")
+	// fmt.Println("my name is vivek and i am learning golang !")
 
-	defer fmt.Println("this is the 2nd defer statement")
+	// Corrected use case of defer for closing the file
+	file, err := os.OpenFile("demo.txt", os.O_RDWR|os.O_APPEND, 0644) // Open file with read and write permissions
+	if err != nil {
+		fmt.Println("error occurred in opening file:", err)
+		return
+	}
 
-	defer fmt.Println("this is the 3nd defer statement")
+	// Ensure the file is closed at the end of the function
+	defer file.Close()
 
-	// it can be clearly seen that in case of multiple defer statements , the defer statements follow LIFO. therefore last statment will get executed first.
+	// Write to the file before closing it
+	_, err = file.WriteString("The file has been updated now\n")
+	if err != nil {
+		fmt.Println("error writing to the file:", err)
+		return
+	}
 
-	fmt.Println("my name is vivek and i am learning golang !")
-
+	fmt.Println("File opened and updated successfully!")
 }
