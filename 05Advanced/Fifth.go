@@ -23,7 +23,7 @@ func main() {
 	defer file.Close()
 
 	// Write to the file before closing it
-	vivbyte, err := file.WriteString("The file has been updated now\n")
+	vivbyte, err := file.WriteString("The file has been updated now and it will further get updated too\n")
 
 	/* _ (underscore): In Go, the underscore is known as the blank identifier. It's used to discard a value that you're not interested in. In this case, WriteString returns two values:
 
