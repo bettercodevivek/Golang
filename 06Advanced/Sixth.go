@@ -3,17 +3,14 @@ package main
 import "fmt"
 
 func main() {
-	// LET US NOW TRY TO UNDERSTAND THE CONCEPT OF POINTERS
+	var num1 int = 20
 
-	var a int = 20
+	var adr *int = &num1
 
-	var ptr *int = &a
+	fmt.Println(num1)
 
-	fmt.Println(*ptr)
+	*adr = num1 + 55
 
-	//If you have a pointer, you can modify the original value by dereferencing the pointer.
+	fmt.Println(*adr)
 
-	*ptr = 50
-
-	fmt.Println("new value is :-", *ptr)
 }
