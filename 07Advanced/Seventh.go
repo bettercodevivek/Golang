@@ -37,4 +37,12 @@ func main() {
 
 	fmt.Println(person1, " ", person2)
 
+	// With named field initialization, you explicitly specify which value corresponds to which field. This can improve readability, especially for larger structs.
+
+	// Fields are accessed and modified using the dot . operator.
+
+	person2.name = "david fincher"
+
+	fmt.Println(person2)
+
 }
