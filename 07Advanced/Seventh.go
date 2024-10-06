@@ -9,6 +9,10 @@ type person struct {
 	orders  int
 }
 
+func (person2 person) greet() string {
+	return " how are you !!" + person2.name
+}
+
 func main() {
 	// let us study about structs in go.
 	/* A struct (short for structure) is used to create a collection of members of different data types, into a single variable.
@@ -44,5 +48,7 @@ func main() {
 	person2.name = "david fincher"
 
 	fmt.Println(person2)
+
+	fmt.Println(person2.greet())
 
 }
