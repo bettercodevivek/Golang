@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+}
 
 func main() {
-	fmt.Println("learning about creating server in golang")
+	http.HandleFunc("/", handler)
+	port := ":8000"
+	log.Fatal(http.ListenAndServe(port, nil))
 }
