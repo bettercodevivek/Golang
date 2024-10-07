@@ -78,4 +78,9 @@ func main() {
 
 	// so we can clearly see if two maps refer to the same hash table which basically mean if two maps are equal then changing the value of one will also change the value in another.
 
+	// let us try and iterate over a map
+
+	for k, v := range map2 {
+		fmt.Println(k, v)
+	}
 }
