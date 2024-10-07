@@ -25,4 +25,15 @@ func main() {
 	map2 := map[int]string{1: "vivek", 2: "john", 3: "dave", 4: "batista"}
 
 	fmt.Println(map2)
+
+	// let us now see how to create a map using make() function
+
+	var map3 = make(map[string]string)
+	map3["name"] = "sam"
+	map3["name"] = "montana"
+	map3["origin"] = "asia"
+	map3["gender"] = "male"
+
+	fmt.Println(map3)
+
 }
