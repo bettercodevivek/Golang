@@ -36,4 +36,21 @@ func main() {
 
 	fmt.Println(map3)
 
+	// The make()function is the right way to create an empty map. If you make an empty map in a different way and write to it, it will causes a runtime panic.
+
+	// Accessing map elements
+
+	fmt.Println(map2[1])
+
+	// map ka name and then in square brackets key name jiski value access karni hai.
+
+	map2[1] = "holden"
+
+	fmt.Println(map2)
+
+	// Removing elements is done using the delete() function.
+
+	delete(map2, 2)
+
+	fmt.Println(map2)
 }
