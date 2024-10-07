@@ -63,4 +63,19 @@ func main() {
 	_, check := map2[3]
 
 	fmt.Println(check)
+
+	// Maps are references to hash tables, which basically means
+	// If two map variables refer to the same hash table, changing the content of one variable affect the content of the other.
+
+	map4 := map2
+	fmt.Println(map4)
+
+	map4[3] = "john cena"
+
+	fmt.Println(map2)
+
+	fmt.Println(map4)
+
+	// so we can clearly see if two maps refer to the same hash table which basically mean if two maps are equal then changing the value of one will also change the value in another.
+
 }
