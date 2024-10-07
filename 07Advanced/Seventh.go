@@ -16,8 +16,11 @@ type struct1 struct {
 	address string
 }
 
-func (person2 person) greet() string {
-	return " how are you !!" + person2.name
+// You can also pass a structure as a function argument, like this:
+
+func SayHello(pers person) {
+	a := "Hello, Mr. " + pers.name + " how are you this evening ?"
+	fmt.Println(a)
 }
 
 func main() {
@@ -56,7 +59,9 @@ func main() {
 
 	fmt.Println(person2)
 
-	fmt.Println(person2.greet())
+	defer SayHello(person1)
+
+	SayHello(person2)
 
 	man1 := struct1{"josh", 21, true, "india"}
 
