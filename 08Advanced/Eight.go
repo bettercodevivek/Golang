@@ -52,5 +52,15 @@ func main() {
 
 	delete(map2, 2)
 
+	// 2 args le rha hai delete() , name of map and the key but without square bracket
+
+	delete(map3, "name")
+
 	fmt.Println(map2)
+
+	fmt.Println(map3)
+
+	_, check := map2[3]
+
+	fmt.Println(check)
 }
