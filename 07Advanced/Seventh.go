@@ -9,6 +9,13 @@ type person struct {
 	orders  int
 }
 
+type struct1 struct {
+	name    string
+	age     int
+	male    bool
+	address string
+}
+
 func (person2 person) greet() string {
 	return " how are you !!" + person2.name
 }
@@ -50,5 +57,18 @@ func main() {
 	fmt.Println(person2)
 
 	fmt.Println(person2.greet())
+
+	man1 := struct1{"josh", 21, true, "india"}
+
+	man2 := struct1{
+		name:    "bale",
+		age:     24,
+		male:    true,
+		address: "delhi",
+	}
+
+	fmt.Print(man1, "\n")
+
+	fmt.Println(man2)
 
 }
