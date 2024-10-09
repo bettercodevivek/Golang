@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -47,4 +48,30 @@ func main() {
 
 	fmt.Println("File Content:-\n", string(data))
 	// conversion of data to string is must to make it in human readable form as the readfile function returns the data of a file in  []byteslice form which basically means ASCII code for each character.
+
+	// Reading with a Buffer
+
+	// To read data in chunks, you can use the Read() method on the file object, which reads the file into a byte slice (buffer).
+
+	buffer := make([]byte, 100) // Buffer to hold chunks of file data
+	bytesRead, err := file.Read(buffer)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Bytes read: %d\n", bytesRead)
+	fmt.Println("Data read from file:\n", string(buffer[:bytesRead]))
+
+	// 4. The Stat() method on a file or os.Stat() on a filename provides details about a file, such as its size, permissions, and modification time.
+
+	filedetails, err := os.Stat("demo.txt")
+
+	if err != nil {
+		fmt.Println("An error occurred while fetching file details => ", err)
+	}
+
+	fmt.Println("Filename : ", filedetails.Name())
+	fmt.Println("FileSize : ", filedetails.Size())
+	fmt.Println("File Last Modified : ", filedetails.ModTime())
+	fmt.Println("File Permissions : ", filedetails.Mode())
+
 }
