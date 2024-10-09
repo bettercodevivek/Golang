@@ -18,8 +18,6 @@ func main() {
 		fmt.Println("An Error occured while creating the file => ", err)
 	}
 
-	defer file.Close()
-
 	fmt.Println("File Create Successfully Boss with the following name => ", file.Name())
 
 	// 2. If you need to open a file that already exists, use os.Open() or os.OpenFile() for more specific options.
@@ -74,4 +72,11 @@ func main() {
 	fmt.Println("File Last Modified : ", filedetails.ModTime())
 	fmt.Println("File Permissions : ", filedetails.Mode())
 
+	// 5. You can delete a file using os.Remove().
+
+	// os.Remove("demo.txt")
+
+	// fmt.Println("file deleted successfully")
+
+	defer file.Close()
 }
