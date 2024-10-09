@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintln(w, "HELLO THIS SERVER IS OWNED BY VIVEK", r.URL)
 	})
 
-	fs := http.FileServer(http.Dir("Static"))
+	fs := http.FileServer(http.Dir("../Static"))
 
 	http.Handle("/Static/", http.StripPrefix("/Static/", fs))
 
