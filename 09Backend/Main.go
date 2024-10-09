@@ -38,8 +38,17 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "HELLO THIS SERVER IS OWNED BY VIVEK")
+		fmt.Fprintln(w, "HELLO THIS SERVER IS OWNED BY VIVEK", r.URL)
 	})
 
-	http.ListenAndServe(":80", nil)
+	fs := http.FileServer(http.Dir("Static"))
+
+	http.Handle("/Static/", http.StripPrefix("/Static/", fs))
+
+	fmt.Println("serving and listening on port:8080")
+
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println("error starting the server", err)
+	}
 }
