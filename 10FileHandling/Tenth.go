@@ -21,7 +21,7 @@ func main() {
 
 	fmt.Println("File Create Successfully Boss with the following name => ", file.Name())
 
-	// If you need to open a file that already exists, use os.Open() or os.OpenFile() for more specific options.
+	// 2. If you need to open a file that already exists, use os.Open() or os.OpenFile() for more specific options.
 
 	// The os.OpenFile() function gives more control over the file’s read/write permissions. This is useful when you need to specify flags for file access, like append mode, read-only, etc.
 
@@ -34,4 +34,17 @@ func main() {
 	file1.WriteString("This is me using openfile function to write to this demo file after its been created ")
 
 	fmt.Println("File opened and modified successfully !!")
+
+	// 3. You can read a file in Go using a few different methods:
+
+	// Reading Entire File at Once
+
+	data, err := os.ReadFile("demo.txt")
+
+	if err != nil {
+		fmt.Println("Error occurred while reading the file => ", err)
+	}
+
+	fmt.Println("File Content:-\n", string(data))
+	// conversion of data to string is must to make it in human readable form as the readfile function returns the data of a file in  []byteslice form which basically means ASCII code for each character.
 }
