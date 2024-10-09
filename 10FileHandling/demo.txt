@@ -1,0 +1,1 @@
+This is me using openfile function to write to this demo file after its been created 

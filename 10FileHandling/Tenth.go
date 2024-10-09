@@ -20,4 +20,18 @@ func main() {
 	defer file.Close()
 
 	fmt.Println("File Create Successfully Boss with the following name => ", file.Name())
+
+	// If you need to open a file that already exists, use os.Open() or os.OpenFile() for more specific options.
+
+	// The os.OpenFile() function gives more control over the file’s read/write permissions. This is useful when you need to specify flags for file access, like append mode, read-only, etc.
+
+	file1, err1 := os.OpenFile("demo.txt", os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
+
+	if err1 != nil {
+		fmt.Println("An error occured while opening the file :- ", err1)
+	}
+
+	file1.WriteString("This is me using openfile function to write to this demo file after its been created ")
+
+	fmt.Println("File opened and modified successfully !!")
 }
