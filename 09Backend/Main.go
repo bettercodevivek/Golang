@@ -33,14 +33,13 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 )
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "hello this is my first server in golang")
+		fmt.Fprintln(w, "HELLO THIS SERVER IS OWNED BY VIVEK")
 	})
 
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	http.ListenAndServe(":80", nil)
 }
