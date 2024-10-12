@@ -1,7 +1,19 @@
 [
   {
-    "username": "walt white",
-    "password": "jesseletscook",
-    "DOB": "2024-10-14"
+    "username": "jesse",
+    "password": "bhosada",
+    "DOB": "2024-10-01"
+  }
+,
+  {
+    "username": "vivek1",
+    "password": "one",
+    "DOB": ""
+  }
+,
+  {
+    "username": "vivke2",
+    "password": "dffgefdg",
+    "DOB": "2024-10-08"
   }
 ]

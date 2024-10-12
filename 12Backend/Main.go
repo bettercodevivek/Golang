@@ -35,6 +35,11 @@ func main() {
 
 	http.Handle("/form/", http.StripPrefix("/form/", fs))
 
+	/* 	http.HandleFunc("/form", func(w http.ResponseWriter, r *http.Request) {
+	   		http.ServeFile(w, r, "./Static/index.html")
+	   	})
+	*/
+
 	http.HandleFunc("/submit", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
 			http.Error(w, "Error occurred :-", http.StatusMethodNotAllowed)
@@ -63,6 +68,7 @@ func main() {
 		}
 
 		fmt.Fprintf(w, "User data saved to JSON file!\n")
+
 	})
 
 	fmt.Println("Server Successfully started at port : 8080")
@@ -91,7 +97,7 @@ func SaveUsertoJSON(newUser user) error {
 
 	users = append(users, newUser)
 
-	file, err := os.Create(userfile)
+	file, err := os.OpenFile(userfile, os.O_APPEND|os.O_RDWR, 0644)
 	if err != nil {
 		return err
 	}
