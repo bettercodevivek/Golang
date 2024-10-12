@@ -6,13 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Golang welcomes you !</h1>
-    <h2>Homepage of my server</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo eveniet quod unde aliquid officiis necessitatibus eos, veniam esse. Ea minus magni doloribus veritatis est natus officiis numquam vero similique voluptates.</p>
+    <form action="/submit" method="post">
+        <label>Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your Username" required>
+        <label>Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+        <label>Date of Birth</label>
+        <input type="date" id="date" name="date" required>
+        <input type="submit">
+    </form>
 </body>
-<style>
-    h1{
-        background-color: aquamarine;
-    }
-</style>
 </html>
