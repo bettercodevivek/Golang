@@ -1,19 +1,12 @@
 [
   {
-    "username": "jesse",
-    "password": "bhosada",
-    "DOB": "2024-10-01"
-  }
-,
+    "username": "sheldon wyatt",
+    "password": "pennyass",
+    "dob": "2024-10-08"
+  },
   {
-    "username": "vivek1",
-    "password": "one",
-    "DOB": ""
-  }
-,
-  {
-    "username": "vivke2",
-    "password": "dffgefdg",
-    "DOB": "2024-10-08"
+    "username": "leonard",
+    "password": "mommy",
+    "dob": "2024-10-14"
   }
 ]

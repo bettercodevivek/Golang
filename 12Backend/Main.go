@@ -11,103 +11,97 @@ import (
 type user struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
-	DOB      string `json:"DOB"`
+	Dob      string `json:"dob"`
 }
 
 var mu sync.Mutex
-
-var userfile = "users.json"
+var userFile = "users.json"
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "WELCOME TO OUR SERVER BOSS !")
+		fmt.Fprintf(w, "WELCOME TO VIVEK'S SERVER !!!")
 	})
-
-	// Agar main ek static file serve karna chahta hu in golang then there are bsically 2 steps =>
-
-	// step 1
+	// root path of the server
 
 	fs := http.FileServer(http.Dir("./Static"))
-
-	// jo directory mein se serve karna hai usse fs mein store karlia using http.FileServer
-
-	// step 2
-
 	http.Handle("/form/", http.StripPrefix("/form/", fs))
 
-	/* 	http.HandleFunc("/form", func(w http.ResponseWriter, r *http.Request) {
-	   		http.ServeFile(w, r, "./Static/index.html")
-	   	})
-	*/
-
+	// Handle form submission
 	http.HandleFunc("/submit", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
-			http.Error(w, "Error occurred :-", http.StatusMethodNotAllowed)
+			http.Error(w, "error occurred", http.StatusMethodNotAllowed)
 			return
 		}
 
 		if err := r.ParseForm(); err != nil {
-			http.Error(w, "an error has occurred", http.StatusInternalServerError)
+			http.Error(w, "error occurred while parsing form", http.StatusInternalServerError)
 			return
 		}
 
 		Username := r.FormValue("username")
 		Password := r.FormValue("password")
-		Date := r.FormValue("date")
+		DOB := r.FormValue("date")
 
-		fmt.Fprintf(w, "Form has been submitted successfully with the following inputs :- \n")
-		fmt.Fprintf(w, "Username is :- %s\n", Username)
-		fmt.Fprintf(w, "Password is :- %s\n", Password)
-		fmt.Fprintf(w, "DOB is :- %s\n", Date)
+		fmt.Fprintf(w, "NEW USER REGISTERED WITH THE FOLLOWING DETAILS :-\n")
+		fmt.Fprintf(w, "Username is :-%s\n", Username)
+		fmt.Fprintf(w, "Password is :-%s\n", Password)
+		fmt.Fprintf(w, "Date Of Birth is :-%s\n", DOB)
 
-		newUser := user{Username, Password, Date}
+		newUser := user{Username: Username, Password: Password, Dob: DOB}
 
-		if err := SaveUsertoJSON(newUser); err != nil {
-			http.Error(w, "An error occurred while saving a new user", http.StatusInternalServerError)
+		if err := SaveUserToJson(newUser); err != nil {
+			http.Error(w, "error occurred in saving to json: "+err.Error(), http.StatusInternalServerError)
 			return
 		}
-
-		fmt.Fprintf(w, "User data saved to JSON file!\n")
-
 	})
 
-	fmt.Println("Server Successfully started at port : 8080")
-
-	http.ListenAndServe(":8080", nil)
-
+	fmt.Println("Server started on port 8000")
+	http.ListenAndServe(":8000", nil)
 }
 
-func SaveUsertoJSON(newUser user) error {
+func SaveUserToJson(newUser user) error {
+	var users []user
+
 	mu.Lock()
 	defer mu.Unlock()
 
-	var users []user
-
-	if _, err := os.Stat(userfile); err != nil {
-		file, err := os.OpenFile(userfile, os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
+	// Check if the file exists
+	if _, err := os.Stat(userFile); err == nil {
+		// File exists, open it and decode existing users
+		file, err := os.OpenFile(userFile, os.O_RDWR, 0644)
 		if err != nil {
 			return err
 		}
 		defer file.Close()
 
-		if err := json.NewDecoder(file).Decode(&users); err != nil {
+		// Decode existing users if file is not empty
+		if err := json.NewDecoder(file).Decode(&users); err != nil && err.Error() != "EOF" {
 			return err
 		}
-	}
-
-	users = append(users, newUser)
-
-	file, err := os.OpenFile(userfile, os.O_APPEND|os.O_RDWR, 0644)
-	if err != nil {
+	} else if os.IsNotExist(err) {
+		// File does not exist, create an empty list
+		users = []user{}
+	} else {
+		// Some other error
 		return err
 	}
 
+	// Append the new user to the list
+	users = append(users, newUser)
+
+	// Reopen the file in write mode, truncating it so we overwrite the content
+	file, err := os.OpenFile(userFile, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0644)
+	if err != nil {
+		return err
+	}
 	defer file.Close()
 
+	// Encode the updated users list to the file
 	encoder := json.NewEncoder(file)
 	encoder.SetIndent("", "  ")
 	if err := encoder.Encode(users); err != nil {
 		return err
 	}
+
 	return nil
 }
