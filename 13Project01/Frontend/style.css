@@ -1,0 +1,27 @@
+#form{
+    display:flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content:space-between;
+    width:fit-content;
+    position:relative;
+    top:12rem;
+    left:36rem;
+    background-color:cornflowerblue;
+    padding:2rem;
+    border-style:solid;
+    border-radius:16px;
+    border-width:0;
+}
+
+#username,#password,#submit,#date{
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:12px;
+    padding-bottom:12px;
+    border-radius:12px;
+}
+
+#submit{
+    margin-top:12px;
+}
