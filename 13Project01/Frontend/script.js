@@ -1,6 +1,12 @@
-const submit = document.getElementById("submit")
+const Form = document.getElementById('form')
 
-submit.addEventListener('click',(e)=>{
-   e.preventDefault();
-   console.log(e.offsetX);
-})
+Form.addEventListener('submit', async function(event){
+    event.preventDefault();
+    const Username = document.getElementById('username').value;
+    const Password = document.getElementById('password').value;
+    const Date = document.getElementById('date').value;
+    
+    
+
+} 
+    )
