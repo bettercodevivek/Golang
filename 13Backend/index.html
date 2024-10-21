@@ -7,5 +7,15 @@
 </head>
 <body>
     <h1>WELCOME TO VIVEK'S SERVER !!! </h1>
+    <h2> New User ? Register Here</h2>
+    <form action="/register" method="post">
+     <label for="username">Username</label>
+     <input type="text" name="username" id="username" placeholder="Enter Your Username" required>
+     <label for="password">Password</label>
+     <input type="password" name="password" id="password" placeholder="Enter Your Password" required minlength="8" maxlength="12">
+     <label for="email">Email</label>
+     <input type="email" name="email" id="email" placeholder="Enter Your Email" required inputmode="email">
+     <button type="submit">Register Now !</button>
+    </form>
 </body>
 </html>
