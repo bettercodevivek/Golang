@@ -32,6 +32,9 @@ func main() {
 		fmt.Fprintf(w, "Email :- %s\n", Email)
 	})
 
+	http.HandleFunc("/users", func(w http.ResponseWriter, r *http.Request) {
+
+	})
 	var port string = ":8080"
 
 	fmt.Printf("Server started at the port :-  %s", port)
