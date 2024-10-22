@@ -45,6 +45,48 @@
 
 // }
 
+// package main
+
+// import (
+// 	"fmt"
+// 	"log"
+// 	"net/http"
+
+// 	"github.com/gorilla/mux"
+// )
+
+// func HomeHandler(w http.ResponseWriter, r *http.Request) {
+// 	http.ServeFile(w, r, "./index.html")
+// }
+
+// func GetUserHandler(w http.ResponseWriter, r *http.Request) {
+// 	vars := mux.Vars(r)
+// 	userID := vars["id"]
+// 	fmt.Fprintf(w, "User ID is :- %s", userID)
+// }
+
+// func createUserHandler(w http.ResponseWriter, r *http.Request) {
+// 	r.ParseForm() // Parse form data
+// 	name := r.FormValue("name")
+// 	fmt.Fprintf(w, "New user created: %s", name)
+// }
+
+// func main() {
+
+// 	r := mux.NewRouter()
+
+// 	r.HandleFunc("/", HomeHandler).Methods("GET")
+// 	r.HandleFunc("/users/{id}", GetUserHandler).Methods("GET")
+// 	r.HandleFunc("/users", createUserHandler).Methods("POST")
+
+// 	log.Println("Server Started at port : 8080")
+
+// 	if err := http.ListenAndServe(":8080", r); err != nil {
+// 		log.Fatal("Error starting server")
+// 	}
+
+// }
+
 package main
 
 import (
@@ -56,33 +98,41 @@ import (
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./index.html")
+	fmt.Fprintf(w, "Welcome to my hompepage :)")
 }
 
-func GetUserHandler(w http.ResponseWriter, r *http.Request) {
+func userHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	userID := vars["id"]
-	fmt.Fprintf(w, "User ID is :- %s", userID)
+	// it extracts the route variables from request
+	userId := vars["name"]
+
+	// here we are simply looking for a key called name in our route, if it doesnt match the route then it wont work.
+	fmt.Fprintf(w, "you are :- %s", userId)
 }
 
-func createUserHandler(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm() // Parse form data
-	name := r.FormValue("name")
-	fmt.Fprintf(w, "New user created: %s", name)
+func LoggingMiddleware(next http.Handler) http.Handler {
+
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Printf(" In the incoming request, Method is :- %s  and  URL is :- %s", r.Method, r.URL)
+
+		next.ServeHTTP(w, r)
+	})
+
 }
 
 func main() {
+	router := mux.NewRouter()
 
-	r := mux.NewRouter()
+	router.HandleFunc("/", HomeHandler).Methods("GET")
 
-	r.HandleFunc("/", HomeHandler).Methods("GET")
-	r.HandleFunc("/users/{id}", GetUserHandler).Methods("GET")
-	r.HandleFunc("/users", createUserHandler).Methods("POST")
+	router.HandleFunc("/users/{name}", userHandler).Methods("GET")
 
-	log.Println("Server Started at port : 8080")
+	router.Use(LoggingMiddleware)
 
-	if err := http.ListenAndServe(":8080", r); err != nil {
-		log.Fatal("Error starting server")
+	fmt.Println("Server Started at Port : 8080")
+
+	if err := http.ListenAndServe(":8080", router); err != nil {
+		log.Fatal("Error Running the Server")
 	}
 
 }
