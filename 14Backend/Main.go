@@ -43,9 +43,22 @@ func CreateUser(db *sql.DB, name string, age int) {
 
 }
 
+func UpdateUser(db *sql.DB, UserID int, NewAge int) {
+	query := "UPDATE users SET age= ? WHERE id = ?"
+
+	_, err := db.Exec(query, UserID, NewAge)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("User Updated with age :- %d having id = %d", NewAge, UserID)
+}
+
 func main() {
 	db := initDB()
 	defer db.Close()
 
-	CreateUser(db, "Penny", 22)
+	// CreateUser(db, "Penny", 22)
+	UpdateUser(db, 2, 34)
 }
