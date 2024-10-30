@@ -137,7 +137,7 @@ func DeleteUser(db *sql.DB, id int) {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Deleted Rows %d\n", rowsAffected)
+	fmt.Printf("Deleted Rows :- %d\n", rowsAffected)
 
 }
 
@@ -149,6 +149,8 @@ func main() {
 
 	// CreateUser(db, "mahesh", 34)
 
-	UpdateUser(db, 3, 38)
+	// UpdateUser(db, 3, 38)
+
+	DeleteUser(db, 2)
 
 }
