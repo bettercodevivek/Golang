@@ -122,6 +122,25 @@ func UpdateUser(db *sql.DB, Userid int, Newage int) {
 
 }
 
+func DeleteUser(db *sql.DB, id int) {
+	query := "DELETE FROM users WHERE id = ?"
+
+	result, err := db.Exec(query, id)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	rowsAffected, err := result.RowsAffected()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Deleted Rows %d\n", rowsAffected)
+
+}
+
 func main() {
 
 	fmt.Println("Hello, I am learning to integrate Database to my backend")
