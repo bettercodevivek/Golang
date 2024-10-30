@@ -141,6 +141,24 @@ func DeleteUser(db *sql.DB, id int) {
 
 }
 
+func ReadUserByID(db *sql.DB, id int) (string, int, error) {
+
+	var (
+		name string
+		age  int
+	)
+	query := "SELECT name,age FROM users WHERE id=?"
+
+	err := db.QueryRow(query, id).Scan(&name, &age)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("User found: %s, %s\n", name, age)
+
+	return name, age, nil
+}
+
 func main() {
 
 	fmt.Println("Hello, I am learning to integrate Database to my backend")
@@ -151,6 +169,8 @@ func main() {
 
 	// UpdateUser(db, 3, 38)
 
-	DeleteUser(db, 2)
+	// DeleteUser(db, 2)
+
+	ReadUserByID(db, 3)
 
 }
