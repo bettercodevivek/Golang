@@ -108,12 +108,28 @@ func CreateUser(db *sql.DB, name string, age int) {
 
 }
 
+func UpdateUser(db *sql.DB, Userid int, Newage int) {
+
+	query := "UPDATE users SET age = ? WHERE id = ?"
+
+	_, err := db.Exec(query, Newage, Userid)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("User Updated Successfully with New Age = %d  and id = %d", Newage, Userid)
+
+}
+
 func main() {
 
 	fmt.Println("Hello, I am learning to integrate Database to my backend")
 
 	db := initDB()
 
-	CreateUser(db, "mahesh", 34)
+	// CreateUser(db, "mahesh", 34)
+
+	UpdateUser(db, 3, 38)
 
 }
