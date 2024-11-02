@@ -154,7 +154,7 @@ func ReadUserByID(db *sql.DB, id int) (string, int, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("User found: %s, %s\n", name, age)
+	fmt.Printf("User found: %s, %d\n", name, age)
 
 	return name, age, nil
 }
